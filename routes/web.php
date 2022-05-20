@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\backend\ProfileController;
 use App\Http\Controllers\backend\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,7 +31,7 @@ Route::middleware([
 });
 Route::get('/admin/logout',[AdminController::class ,'Logout'])->name('admin.logout');
 
-// Management User
+// Management User CRUD
 
 Route::prefix('user')->group(function(){
 Route::get('/view',[UserController::class,'UserView'])->name('user.view');
@@ -41,4 +42,13 @@ Route::Post('/update/{id}',[UserController::class,'UserUpdate'])->name('user.upd
 Route::get('/delete/{id}',[UserController::class,'UserDelete'])->name('users.delete');
 });
 
+// mangement Profile and change password
+Route::prefix('profile')->group(function(){
+    Route::get('/view',[ProfileController::class,'ProfileView'])->name('profile.view');
+    Route::get('/edit',[ProfileController::class,'ProfileEdit'])->name('profile.edit');
+    Route::post('/store',[ProfileController::class,'ProfileStore'])->name('profile.store');
+    Route::get('/password/view',[ProfileController::class,'PasswordView'])->name('password.view');
+    Route::post('/password/update',[ProfileController::class,'PasswordUpdate'])->name('password.update');
+
+    });
 

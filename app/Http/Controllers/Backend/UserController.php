@@ -41,12 +41,13 @@ class UserController extends Controller
 
         return redirect()->route('user.view')->with($nitification);
     }
-    public function UserEdit($id){
-        $editData=User::find($id);
-        return view('backend.user.edit_user',compact('editData'));
-
+    public function UserEdit($id)
+    {
+        $editData = User::find($id);
+        return view('backend.user.edit_user', compact('editData'));
     }
-    public function UserUpdate(Request $request ,$id){
+    public function UserUpdate(Request $request, $id)
+    {
         $data = User::find($id);
         $data->usertype = $request->usertype;
         $data->name = $request->name;
@@ -60,9 +61,10 @@ class UserController extends Controller
         return redirect()->route('user.view')->with($nitification);
     }
 
-    public function UserDelete($id){
+    public function UserDelete($id)
+    {
 
-        $user=User::find($id);
+        $user = User::find($id);
         $user->delete();
         $nitification = array(
             'message' => 'User Deleted Successfuly',
