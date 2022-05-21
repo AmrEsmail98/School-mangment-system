@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\backend\ProfileController;
+use App\Http\Controllers\Backend\Setup\StudentClassController;
 use App\Http\Controllers\backend\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,26 +30,38 @@ Route::middleware([
         return view('admin.index');
     })->name('dashboard');
 });
-Route::get('/admin/logout',[AdminController::class ,'Logout'])->name('admin.logout');
+Route::get('/admin/logout', [AdminController::class, 'Logout'])->name('admin.logout');
 
 // Management User CRUD
 
-Route::prefix('user')->group(function(){
-Route::get('/view',[UserController::class,'UserView'])->name('user.view');
-Route::get('/add',[UserController::class,'UserAdd'])->name('users.add');
-Route::post('/store',[UserController::class,'UserStore'])->name('user.store');
-Route::get('/edit/{id}',[UserController::class,'UserEdit'])->name('users.edit');
-Route::Post('/update/{id}',[UserController::class,'UserUpdate'])->name('user.update');
-Route::get('/delete/{id}',[UserController::class,'UserDelete'])->name('users.delete');
+Route::prefix('user')->group(function () {
+    Route::get('/view', [UserController::class, 'UserView'])->name('user.view');
+    Route::get('/add', [UserController::class, 'UserAdd'])->name('users.add');
+    Route::post('/store', [UserController::class, 'UserStore'])->name('user.store');
+    Route::get('/edit/{id}', [UserController::class, 'UserEdit'])->name('users.edit');
+    Route::Post('/update/{id}', [UserController::class, 'UserUpdate'])->name('user.update');
+    Route::get('/delete/{id}', [UserController::class, 'UserDelete'])->name('users.delete');
 });
 
 // mangement Profile and change password
-Route::prefix('profile')->group(function(){
-    Route::get('/view',[ProfileController::class,'ProfileView'])->name('profile.view');
-    Route::get('/edit',[ProfileController::class,'ProfileEdit'])->name('profile.edit');
-    Route::post('/store',[ProfileController::class,'ProfileStore'])->name('profile.store');
-    Route::get('/password/view',[ProfileController::class,'PasswordView'])->name('password.view');
-    Route::post('/password/update',[ProfileController::class,'PasswordUpdate'])->name('password.update');
+Route::prefix('profile')->group(function () {
+    Route::get('/view', [ProfileController::class, 'ProfileView'])->name('profile.view');
+    Route::get('/edit', [ProfileController::class, 'ProfileEdit'])->name('profile.edit');
+    Route::post('/store', [ProfileController::class, 'ProfileStore'])->name('profile.store');
+    Route::get('/password/view', [ProfileController::class, 'PasswordView'])->name('password.view');
+    Route::post('/password/update', [ProfileController::class, 'PasswordUpdate'])->name('password.update');
+});
 
-    });
+// Student Class
+Route::prefix('setups')->group(function () {
+    Route::get('/student/class/view', [StudentClassController::class, 'ViewStudent'])->name('student.class.view');
+    Route::get('/student/class/add', [StudentClassController::class, 'AddStudent'])->name('student.class.add');
+    Route::post('/student/class/store', [StudentClassController::class, 'StoreStudent'])->name('student.class.store');
+    Route::get('/student/class/edit/{id}', [StudentClassController::class, 'EditStudent'])->name('student.class.edit');
+    Route::post('/student/class/update/{id}', [StudentClassController::class, 'UpdateStudent'])->name('student.class.update');
+    Route::get('/student/class/delete/{id}', [StudentClassController::class, 'DeleteStudent'])->name('student.class.delete');
+
+
+
+});
 
