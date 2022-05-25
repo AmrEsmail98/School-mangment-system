@@ -59,7 +59,7 @@ class StudentClassController extends Controller
         $user = StudentClass::find($id);
         $user->delete();
         $nitification = array(
-            'message' => ' Studend Class Deleted Successfuly',
+            'message' => ' Student Class Deleted Successfuly',
             'alert-type' => 'info'
         );
 
@@ -67,4 +67,3 @@ class StudentClassController extends Controller
     }
     }
 
- 
