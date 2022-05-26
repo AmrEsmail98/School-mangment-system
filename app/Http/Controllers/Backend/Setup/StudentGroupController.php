@@ -19,7 +19,7 @@ class StudentGroupController extends Controller
     public function StoreGroup(Request $request){
         $validatedData = $request->validate([
 
-            'name' => 'required|unique:student_classes,name',
+            'name' => 'required|unique:student_groups,name',
         ]);
 
         $data = new StudentGroup();
@@ -53,7 +53,7 @@ class StudentGroupController extends Controller
         $user = StudentGroup::find($id);
         $user->delete();
         $nitification = array(
-            'message' => ' Student Class Deleted Successfuly',
+            'message' => ' Student Group Deleted Successfuly',
             'alert-type' => 'info'
         );
 
