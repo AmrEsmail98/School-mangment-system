@@ -33,7 +33,8 @@
                                                         </select>
 
                                                     </div>
-                                                </div> </div>
+                                                </div>
+                                            </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <h5>User Name <span class="text-danger">*</span></h5>
