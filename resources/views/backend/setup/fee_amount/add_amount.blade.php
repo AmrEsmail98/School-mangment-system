@@ -50,7 +50,7 @@
 	<h5>Student Class <span class="text-danger">*</span></h5>
 	<div class="controls">
 	 <select name="class_id[]" required="" class="form-control">
-		<option value="" selected="" disabled="">Select Fee Category</option>
+		<option value="" selected="" disabled="">Select Class</option>
 		@foreach($classes as $class)
 		<option value="{{ $class->id }}">{{ $class->name }}</option>
 		@endforeach
