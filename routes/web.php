@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\backend\ProfileController;
+use App\Http\Controllers\Backend\Setup\AssignSubjectController;
 use App\Http\Controllers\Backend\Setup\ExamTypeController;
 use App\Http\Controllers\Backend\Setup\FeeAmountController;
 use App\Http\Controllers\Backend\Setup\FeeCategoryController;
@@ -124,5 +125,15 @@ Route::prefix('setups')->group(function () {
      Route::post('school/subject/update/{id}', [SchoolSubjectController::class, 'UpdateSubject'])->name('school.subject.update');
      Route::get('school/subject/delete/{id}', [SchoolSubjectController::class, 'DeleteSubject'])->name('school.subject.delete');
 
+    // Assign Subject
+     Route::get('assign/subject/view', [AssignSubjectController::class, 'ViewAssignSubject'])->name('assign.subject.view');
+     Route::get('assign/subject/add', [AssignSubjectController::class, 'AddAssignSubject'])->name('assign.subject.add');
+     Route::post('assign/subject/store', [AssignSubjectController::class, 'StoresignSubject'])->name('assign.subject.store');
+     Route::get('assign/subject/edit/{class_id}', [AssignSubjectController::class, 'EditAssignSubject'])->name('assign.subject.edit');
+     Route::post('assign/subject/update/{class_id}', [AssignSubjectController::class, 'UpdateAssignSubject'])->name('assign.subject.update');
+     Route::get('assign/subject/detalis/{class_id}', [AssignSubjectController::class, 'DetalisAssignSubject'])->name('assign.subject.details');
+
 });
+
+
 
