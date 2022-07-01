@@ -41,12 +41,12 @@ class ProfileController extends Controller
             $data['image'] = $filename;
         }
         $data->save();
-        $nitification = array(
+        $notification = array(
             'message' => 'User Profile Updated Successfuly',
             'alert-type' => 'info'
         );
 
-        return redirect()->route('profile.view')->with($nitification);
+        return redirect()->route('profile.view')->with($notification);
     }
     public function PasswordView()
     {
