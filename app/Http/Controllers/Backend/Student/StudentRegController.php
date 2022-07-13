@@ -20,7 +20,7 @@ class StudentRegController extends Controller
     $data['year_id']=StudentYear::orderBy('id','desc')->first()->id;
     $data['class_id']=StudentClass::orderBy('id','desc')->first()->id;
     $data['classes']=StudentClass::all();
-    $data['allData']=AssignStudent::where('year_id',$data['year_id'])->where('class_id',$data['class_id'])->get(); 
+    $data['allData']=AssignStudent::where('year_id',$data['year_id'])->where('class_id',$data['class_id'])->get();
     return view('backend.student.student_reg.student_view',$data);
     }
 
@@ -30,6 +30,16 @@ class StudentRegController extends Controller
         $data['groups']=StudentGroup::all();
         $data['shifts']=StudentShift::all();
         return view('backend.student.student_reg.student_add',$data);
+    }
+
+    public function StudentClassYear(Request $request){
+        $data['years']=StudentYear::all();
+        $data['classes']=StudentClass::all();
+        $data['year_id']=$request->year_id;
+        $data['class_id']=$request->class_id;
+
+        $data['allData']=AssignStudent::where('year_id',$request->year_id)->where('class_id',$request->class_id)->get();
+        return view('backend.student.student_reg.student_view',$data);
     }
 
     public function StudentRegStore(Request $request){

@@ -14,7 +14,7 @@
                             </div>
 
                             <div class="box-body">
-                                <form method="" action="">
+                                <form method="GET" action="{{ route('student.year.class.wise') }}">
 
                                     <div class="row">
 
@@ -26,7 +26,9 @@
                                                     <option value="" disabled="" selected="">Select Year
                                                     </option>
                                                     @foreach ($years as $year)
-                                                        <option value="{{ $year->id }}">{{ $year->name }}</option>
+                                                        <option value="{{ $year->id }}"
+                                                            {{ @$year_id == $year->id ? 'selected' : '' }}>
+                                                            {{ $year->name }}</option>
                                                     @endforeach
 
 
@@ -44,7 +46,9 @@
                                                         <option value="" disabled="" selected="">Select Year
                                                         </option>
                                                         @foreach ($classes as $class)
-                                                            <option value="{{ $class->id }}">{{ $class->name }}</option>
+                                                            <option value="{{ $class->id }}"
+                                                                {{ @$class_id == $class->id ? 'selected' : '' }}>
+                                                                {{ $class->name }}</option>
                                                         @endforeach
 
 
@@ -57,8 +61,7 @@
 
                                         <div class="col-md-4" style="padding-top:25px">
 
-                                            <input type="submit" class="btn btn-rounded btn-dark mb-5" name="search"
-                                                value="Search">
+                                            <input type="submit" class="btn btn-rounded btn-dark mb-5" name="search" value="Search">
 
 
 
@@ -82,29 +85,93 @@
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <div class="table-responsive">
-                                    <table id="example1" class="table table-bordered table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th width="5%">Id</th>
-                                                <th>Name</th>
-                                                <th>Id No</th>
-                                                <th Width="25%">Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($allData as $key => $value)
+                                    @if('!@search')
+                                        <table id="example1" class="table table-bordered table-striped">
+                                            <thead>
                                                 <tr>
-                                                    <td>{{ $key + 1 }}</td>
-                                                    <td>{{ $value->class_id }}</td>
-                                                    <td>{{ $value->year_id }}</td>
-                                                    <td>
-                                                        <a href="" class="btn btn-info"> Edit</a>
-                                                        <a href="" class="btn btn-danger" id="delete"> Delete</a>
-                                                    </td>
+                                                    <th width="5%">Id</th>
+                                                    <th>Name</th>
+                                                    <th>ID_NO</th>
+                                                    <th>Roll</th>
+                                                    <th>Year</th>
+                                                    <th>Class</th>
+                                                    <th>Image</th>
+                                                    @if (Auth::User()->role == 'Admin')
+                                                        <th>Code</th>
+                                                    @endif
+                                                    <th Width="25%">Action</th>
                                                 </tr>
-                                            @endforeach
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($allData as $key => $value)
+                                                    <tr>
+                                                        <td>{{ $key + 1 }}</td>
+                                                        <td>{{ $value['student']['name'] }}</td>
+                                                        <td>{{ $value['student']['id_no'] }}</td>
+                                                        <td>{{ $value->roll }}</td>
+                                                        <td>{{ $value['student_year']['name'] }}</td>
+                                                        <td>{{ $value['student_class']['name'] }}</td>
+                                                        <<td>
+                                                            <img id="showimage"
+                                                                src="{{ !empty($value['student']['image']) ? url('upload/student_images/' . $value['student']['image']) : url('upload/no_image.jpg') }}"
+                                                                style="width:60px">
 
-                                    </table>
+                                                            </td>
+                                                            <td>{{ $value['student_class']['name'] }}</td>
+
+                                                            <td>
+                                                                <a href="" class="btn btn-info"> Edit</a>
+                                                                <a href="" class="btn btn-danger" id="delete">
+                                                                    Delete</a>
+                                                            </td>
+                                                    </tr>
+                                                @endforeach
+
+                                        </table>
+                                    @else
+                                        <table id="example1" class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th width="5%">Id</th>
+                                                    <th>Name</th>
+                                                    <th>ID_NO</th>
+                                                    <th>Roll</th>
+                                                    <th>Year</th>
+                                                    <th>Class</th>
+                                                    <th>Image</th>
+                                                    @if (Auth::User()->role == 'Admin')
+                                                        <th>Code</th>
+                                                    @endif
+                                                    <th Width="25%">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($allData as $key => $value)
+                                                    <tr>
+                                                        <td>{{ $key + 1 }}</td>
+                                                        <td>{{ $value['student']['name'] }}</td>
+                                                        <td>{{ $value['student']['id_no'] }}</td>
+                                                        <td>{{ $value->roll }}</td>
+                                                        <td>{{ $value['student_year']['name'] }}</td>
+                                                        <td>{{ $value['student_class']['name'] }}</td>
+                                                        <td>
+                                                            <img id="showimage"
+                                                                src="{{ !empty($value['student']['image']) ? url('upload/student_images/' . $value['student']['image']) : url('upload/no_image.jpg') }}"
+                                                                style="width:60px">
+
+                                                        </td>
+                                                        <td>{{ $value['student_class']['name'] }}</td>
+
+                                                        <td>
+                                                            <a href="" class="btn btn-info"> Edit</a>
+                                                            <a href="" class="btn btn-danger" id="delete">
+                                                                Delete</a>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+
+                                        </table>
+                                    @endif
                                 </div>
                             </div>
                             <!-- /.box-body -->
