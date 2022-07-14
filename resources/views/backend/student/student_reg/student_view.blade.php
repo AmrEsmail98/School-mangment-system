@@ -120,9 +120,9 @@
                                                             <td>{{ $value['student_class']['name'] }}</td>
 
                                                             <td>
-                                                                <a href="" class="btn btn-info"> Edit</a>
-                                                                <a href="" class="btn btn-danger" id="delete">
-                                                                    Delete</a>
+                                                                <a href="{{route('student.registration.edit',$value->student_id)}}" class="btn btn-info"> Edit</a>
+                                                                <a href="{{route('student.registration.promotion',$value->student_id)}}" class="btn btn-danger">Promotion</a>
+
                                                             </td>
                                                     </tr>
                                                 @endforeach
@@ -163,9 +163,9 @@
                                                         <td>{{ $value['student_class']['name'] }}</td>
 
                                                         <td>
-                                                            <a href="" class="btn btn-info"> Edit</a>
-                                                            <a href="" class="btn btn-danger" id="delete">
-                                                                Delete</a>
+                                                            <a href="{{route('student.registration.edit',$value->student_id)}}" class="btn btn-info"> Edit</a>
+                                                            <a href="{{route('student.registration.promotion',$value->student_id)}}" class="btn btn-danger">
+                                                                Promotion</a>
                                                         </td>
                                                     </tr>
                                                 @endforeach
