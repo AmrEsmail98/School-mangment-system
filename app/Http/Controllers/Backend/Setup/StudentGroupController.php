@@ -49,14 +49,14 @@ class StudentGroupController extends Controller
 
         return redirect()->route('student.group.view')->with($nitification);
     }
-    public function DeleteGroup($id){
-        $user = StudentGroup::find($id);
-        $user->delete();
-        $nitification = array(
-            'message' => ' Student Group Deleted Successfuly',
-            'alert-type' => 'info'
-        );
+    // public function DeleteGroup($id){
+    //     $user = StudentGroup::find($id);
+    //     $user->delete();
+    //     $nitification = array(
+    //         'message' => ' Student Group Deleted Successfuly',
+    //         'alert-type' => 'info'
+    //     );
 
-        return redirect()->route('student.group.view')->with($nitification);
-    }
+    //     return redirect()->route('student.group.view')->with($nitification);
+    // }
 }
