@@ -78,11 +78,12 @@
             <ul class="treeview-menu">
               <li><a href="{{route('student.registration.view')}}"><i class="ti-more"></i>Student Registration</a></li>
               <li><a href="{{route('roll.generate.view')}}"><i class="ti-more"></i>Roll Generate</a></li>
+              <li><a href="{{route('register.fee.view')}}"><i class="ti-more"></i>Register Fee</a></li>
 
 
             </ul>
           </li>
-
+{{--
         <li class="header nav-small-cap">User Interface</li>
 
         <li class="treeview">
@@ -98,7 +99,7 @@
             <li><a href="components_badges.html"><i class="ti-more"></i>Badge</a></li>
 
           </ul>
-        </li>
+        </li> --}}
 
       </ul>
     </section>

@@ -46,17 +46,17 @@
 
      	<div class="col-md-5">
 
-   <div class="form-group">
-	<h5>Student Class <span class="text-danger">*</span></h5>
-	<div class="controls">
+    <div class="form-group">
+	 <h5>Student Class <span class="text-danger">*</span></h5>
+	  <div class="controls">
 	 <select name="class_id[]" required="" class="form-control">
 		<option value="" selected="" disabled="">Select Class</option>
 		@foreach($classes as $class)
 		<option value="{{ $class->id }}">{{ $class->name }}</option>
 		@endforeach
 		</select>
-	 </div>
-          </div> <!-- // end form group -->
+	     </div>
+         </div> <!-- // end form group -->
 
 
      	</div> <!-- End col-md-5 -->
@@ -73,15 +73,16 @@
      	</div><!-- End col-md-5 -->
 
      	<div class="col-md-2" style="padding-top: 25px;">
- <span class="btn btn-success addeventmore"><i class="fa fa-plus-circle"></i> </span>
-     	</div><!-- End col-md-5 -->
+        <span class="btn btn-success addeventmore"><i class="fa fa-plus-circle"></i> </span>
+     	</div>
+        <!-- End col-md-5 -->
 
      </div> <!-- end Row -->
 
  </div>	<!-- // End add_item -->
 
 		 	<div class="text-xs-right">
-  <input type="submit" class="btn btn-rounded btn-info mb-5" value="Submit">
+               <input type="submit" class="btn btn-rounded btn-info mb-5" value="Submit">
 						</div>
 					</form>
 

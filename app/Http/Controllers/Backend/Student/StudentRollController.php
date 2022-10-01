@@ -7,12 +7,7 @@ use App\Models\StudentClass;
 use App\Models\StudentYear;
 use Illuminate\Http\Request;
 use App\Models\AssignStudent;
-use App\Models\User;
-use App\Models\DiscountStudent;
-use App\Models\StudentGroup;
-use App\Models\StudentShift;
-use DB;
-use PDF;
+
 
 
 class StudentRollController extends Controller
@@ -57,7 +52,5 @@ class StudentRollController extends Controller
     	return redirect()->route('roll.generate.view')->with($notification);
 
     }// end Method
-
-
 
 }
